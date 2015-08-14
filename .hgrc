@@ -19,7 +19,7 @@ purge =
 track.current = True
 
 [alias]
-qz = qrefresh -u "Marcos Ojeda <marcos@khanacademy.org>" -e
+qz = qrefresh -u "Marcos Ojeda <subliminal@gmail.com>" -e
 qr = qrefresh -X .hgsub*
 qn = qnew -X .hgsub*
 show = log --color=always -pr
@@ -43,9 +43,6 @@ attend = annotate, cat, diff, export, glog, log, qdiff, slog, dlog, gslog, sglog
 
 [diff]
 git=1
-
-[identities]
-khanacademy.kilnhg.com = Marcos Ojeda <marcos@khanacademy.org>
 
 [remotebranches]
 alias.default = True

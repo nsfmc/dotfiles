@@ -26,21 +26,21 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(osx)
 
-# fix git co, p
+# TODO(marcos): at some point fix git co, p
 # compdef _git co=git-checkout
 
 source $ZSH/oh-my-zsh.sh
 
 # khan academy related
 # source /usr/local/arcanist/resources/shell/bash-completion
-export LINTDIR=/usr/local/khan-linter
+# export LINTDIR=/usr/local/khan-linter
 
 # fancy colors please!
 CLICOLOR=1
 
 # use vim
-export EDITOR=subl
-export VISUAL=subl
+# export EDITOR=subl
+# export VISUAL=subl
 
 # turn on colors for ack searches
 ACK_PAGER_COLOR="less -x4SRFX"
@@ -57,27 +57,28 @@ HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 VIRTUAL_ENV_DISABLE_PROMPT=true
 NODE_VIRTUAL_ENV_DISABLE_PROMPT=true
 
+# for dealing with appengine/ka webapp
 alias gae=". ~/.virtualenv/khan27/bin/activate"
 alias ngx="sudo nginx -c /usr/local/etc/nginx/local.conf"
-alias apex="acme -f /mnt/font/LucidaGrande/22a/font -F /mnt/font/SourceCodePro-Regular/22a/font"
 
-# pythonpath updates, for homebrew
-# DELETEME(marcos): 24dec (seems to break gae)
-# export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# for suing acme editor in retina
+alias apex="acme -f /mnt/font/LucidaGrande/22a/font -F /mnt/font/SourceCodePro-Regular/22a/font"
 
 # path updates
 PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/opt/local/bin:${PATH}
 PATH=$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-PATH=~/khan/devtools/arcanist/khan-bin:${PATH}
-PATH=~/khan/devtools/git-bigfile/bin:${PATH}
+
+# KA-specific path updates
+# PATH=~/khan/devtools/arcanist/khan-bin:${PATH}
+# PATH=~/khan/devtools/git-bigfile/bin:${PATH}
+# PATH=~/khan/devtools/ka-clone/bin:$PATH
+# PATH=~/khan/devtools/khan-linter/bin:$PATH
+# PATH=~/khan/devtools/git-workflow/bin:$PATH
+
 PATH=/usr/local/share/npm/bin:${PATH}
 PATH=~/.cabal/bin:${PATH}
 PATH=~/.bin/wofftools:${PATH}
-
-PATH=~/khan/devtools/ka-clone/bin:$PATH
-PATH=~/khan/devtools/khan-linter/bin:$PATH
-PATH=~/khan/devtools/git-workflow/bin:$PATH
 
 FDK_EXE="/Users/marcos/.bin/fdk/Tools/osx"
 PATH=${PATH}:$FDK_EXE:$SFNT_BIN
@@ -87,13 +88,13 @@ PATH=${PATH}:${GOPATH}/bin
 export PATH CLICOLOR ACK_PAGER_COLOR FDK_EXE EDITOR MANPAGER GOPATH
 
 # use rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # Plan 9 from userspace
 PLAN9=/usr/local/plan9 export PLAN9
 PATH=${PATH}:${PLAN9}/bin export PATH
 # TODO(marcos): reenable this when fontsrv works
-export devdrawretina=1
+# export devdrawretina=1
 
 motd

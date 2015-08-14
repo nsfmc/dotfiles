@@ -1,0 +1,41 @@
+to bootstrap a system:
+
+
+# cli nonsense
+
+## brew
+
+* ssh-copy-id
+* npm
+
+## npm
+
+* http-server
+* eslint
+* eslint-
+
+## misc config
+
+* dotfiles
+* zsh / ohmyzsh
+* ~/.bin/
+* set user perms on python dirs (https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Gems,-Eggs-and-Perl-Modules.md)
+
+    chmod +a 'user:marcos allow add_subdirectory,add_file,delete_child,directory_inherit' /Library/Python/2.7/site-packages
+
+## pip
+* virtualenv
+* hg
+
+## mac apps
+
+* dropbox
+* 1password
+* sublime text -- pkg control
+* bowtie.app
+* bartender
+* upshot.it
+* chrome
+
+
+## sublime packages
