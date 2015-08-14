@@ -1,0 +1,6 @@
+softTabs = true
+tabSize = 2
+
+[ "*.py" ]
+softTabs = true
+tabSize = 4

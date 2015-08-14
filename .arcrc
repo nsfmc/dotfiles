@@ -1,0 +1,31 @@
+{
+  "aliases": {
+    "mail": [
+      "diff",
+      "--verbatim"
+    ]
+  },
+  "config": {
+    "default": "http://phabricator.khanacademy.org",
+    "history.immutable": false,
+    "lint.engine": "ArcanistSingleLintEngine",
+    "lint.engine.single.linter": "ArcanistScriptAndRegexLinter",
+    "linter.scriptandregex.regex": "/^((?P<file>[^:]*):(?P<line>\\d+):((?P<char>\\d+):)? (?P<name>((?P<error>E)|(?P<warning>W))\\S+) (?P<message>.*))|(?P<ignore>SKIPPING.*)$/m",
+    "linter.scriptandregex.script": "/usr/local/khan-linter/runlint.py --always-exit-0 --blacklist=yes",
+    "linter.scriptandregex.script__example_must_fix_up_path": "~/khan/devtools/khan-linter/runlint.py --always-exit-0 --blacklist=yes"
+  },
+  "hosts": {
+    "http://phabricator.khanacademy.org/api/": {
+      "cert": "nuyglzirxkultqd3uogtefnskip7pzlotoygsgsjtbbwvanzjgyoirwty4zbhmetvyhironc6zsyyvt54jdzu2r2bvofkpji5mxvg6k5ymixeyovcaqgqfenhjzu5bznmi24maftbhn3onhxspnyxek3tyw5izubgzaiuxddxdommrckigc6gyjttftrr3izba5zgsw62paikcqsmvibxpws4dvt4ha3mc35nc6zpxofy7q6cqzfqcw6v4o4mj6",
+      "user": "marcos"
+    }
+  },
+  "khan": {
+    "do_not_auto_update": [
+      "config/linter.scriptandregex.script",
+      "config/linter.scriptandregex.script__example_must_fix_up_path",
+      "aliases/mail",
+      "khan/do_not_auto_update"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+[ui]
+username = Marcos Ojeda <subliminal@gmail.com>
+commitsubrepos = false
+
+[extensions]
+bookmarks =
+evolve = ~/.bin/mutable-history/hgext/evolve.py
+mq =
+rebase =
+hgext.graphlog =
+hgext.fetch =
+color =
+pager =
+hgext.convert =
+prompt = ~/.bin/hg-prompt/prompt.py
+purge =
+
+[bookmarks]
+track.current = True
+
+[alias]
+qz = qrefresh -u "Marcos Ojeda <marcos@khanacademy.org>" -e
+qr = qrefresh -X .hgsub*
+qn = qnew -X .hgsub*
+show = log --color=always -pr
+nudge = push --rev .
+nout = out --rev .
+desc = log --stat --color=always -vr
+qstatus = status --rev -2:
+
+[merge-tools]
+p4.priority = 100
+p4.premerge = True
+p4.executable = /Applications/p4merge.app/Contents/Resources/launchp4merge
+p4.gui = True
+p4.args = $base $local $other $output
+
+
+[pager]
+pager = LESS='FSRX' less
+attend = annotate, cat, diff, export, glog, log, qdiff, slog, dlog, gslog, sglog, df, show, help
+# note: this can be temporarily disabled with --pager=off
+
+[diff]
+git=1
+
+[identities]
+khanacademy.kilnhg.com = Marcos Ojeda <marcos@khanacademy.org>
+
+[remotebranches]
+alias.default = True
+alias.showbranch = False

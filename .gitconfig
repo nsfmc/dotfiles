@@ -1,0 +1,45 @@
+[user]
+	name = Marcos Ojeda
+	email = subliminal@gmail.com
+[github]
+	user = nsfmc
+	token = c76d0c2d133b80e14aad79154b3f9920
+	password = zipgun
+[color]
+	ui = true
+[branch]
+    autosetupmerge = always
+	autosetuprebase = always
+[alias]
+	unstage = reset HEAD --
+	st = status
+	ci = commit
+	wip = commit -am \"WIP\"
+	unwip = reset HEAD^
+	co = "!f() { git checkout $* && git submodule update --init --recursive; }; f"
+	p = !sh -c 'git pull $* && git submodule update --init --recursive' --
+	m = "!f() { git merge \"$@\" && git submodule update --init --recursive; }; f"
+	squish = "!f() { git status && git commit -a --amend -C HEAD; }; f"
+	unsquish = reset --soft HEAD@{1}
+	weekly = !sh -c 'git log --author=$USER --since=`gdate -d last\\ monday +%Y/%m/%d`'
+	findreviewers = !~/khan/webapp/tools/findreviewers.py $*
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/marcos/.gitignore_global
+[merge]
+	keepBackup = false;
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	keepTemporaries = false
+	trustExitCode = false
+	keepBackup = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Users/marcos/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
