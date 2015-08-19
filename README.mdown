@@ -1,31 +1,10 @@
-to bootstrap a system:
+to bootstrap your computer
 
+# xcode
 
-# cli nonsense
-
-## brew
-
-* ssh-copy-id
-* npm
-
-## npm
-
-* http-server
-* eslint
-* eslint-
-
-## misc config
-
-* dotfiles
-* zsh / ohmyzsh
-* ~/.bin/
-* set user perms on python dirs (https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Gems,-Eggs-and-Perl-Modules.md)
-
-    chmod +a 'user:marcos allow add_subdirectory,add_file,delete_child,directory_inherit' /Library/Python/2.7/site-packages
-
-## pip
-* virtualenv
-* hg
+do this first, get it from the mac app store. optionally, trying to run `git`
+will trigger downloading command line tools, but you may be missing a compiler
+at the end of it.
 
 ## mac apps
 
@@ -36,6 +15,72 @@ to bootstrap a system:
 * bartender
 * upshot.it
 * chrome
+* spotify
+* slack
+
+# cli nonsense
+
+## ssh
+
+    ssh-keygen -t rsa
+
+## brew
+
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+having done that
+
+    brew install ssh-copy-id node010 trash
+
+
+## npm
+
+    npm install -g http-server
+
+    # individual packages get this
+    npm install --save-dev eslint@latest
+    npm install --save-dev babel-eslint@latest
+    npm install --save-dev eslint-plugin-react@latest
+
+
+## misc config
+
+    chsh -s zsh
+    git clone https://github.com/nsfmc/oh-my-zsh ~/.oh-my-zsh
+    mkdir ~/.bin/
+
+
+* set user perms on python dirs (https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Gems,-Eggs-and-Perl-Modules.md)
+
+    chmod +a 'user:marcos allow add_subdirectory,add_file,delete_child,directory_inherit' /Library/Python/2.7/site-packages
+
+## pip
+
+first install pip
+
+    curl -O https://bootstrap.pypa.io/get-pip.py
+    python get-pip.py
+
+then install some packages to remove `InsecurePlatformWarning`s
+
+    pip install pyopenssl ndg-httpsclient pyasn1
+
+then install virtualenv and mercurial
+
+    pip install virtualenv mercurial
+
+
+## mercurial
+
+    hg clone https://bitbucket.org/sjl/hg-prompt/ ~/.bin/hg-prompt
+    hg clone https://marcos@bitbucket.org/marmoute/mutable-history ~/.bin/mutable-history
 
 
 ## sublime packages
+
+some packages to install
+
+* babel
+* oceanic-next
+* sublimelinter
+* sublimelinter-contrib-eslint
