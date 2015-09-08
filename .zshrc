@@ -61,6 +61,8 @@ NODE_VIRTUAL_ENV_DISABLE_PROMPT=true
 alias gae=". ~/.virtualenv/khan27/bin/activate"
 alias ngx="sudo nginx -c /usr/local/etc/nginx/local.conf"
 
+alias dicelist="python -c \"import random; print ' '.join([''.join([str(random.randrange(1,7)) for x in range(5)]) for x in range(4)])"\"
+
 # for suing acme editor in retina
 alias apex="acme -f /mnt/font/LucidaGrande/22a/font -F /mnt/font/SourceCodePro-Regular/22a/font"
 
