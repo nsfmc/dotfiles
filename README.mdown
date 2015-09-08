@@ -43,11 +43,19 @@ having done that
     npm install --save-dev eslint-plugin-react@latest
 
 
+    # maybe...
+    npm install --save-dev react-hot-loader
+    # or...
+    git clone https://github.com/gaearon/react-transform-boilerplate.git
+
 ## misc config
 
     chsh -s zsh
     git clone https://github.com/nsfmc/oh-my-zsh ~/.oh-my-zsh
     mkdir ~/.bin/
+
+    # oldschool keyboard repeat behavior
+    defaults write NSGlobalDomain KeyRepeat -int 0
 
 
 * set user perms on python dirs (https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Gems,-Eggs-and-Perl-Modules.md)
@@ -65,7 +73,7 @@ then install some packages to remove `InsecurePlatformWarning`s
 
     pip install pyopenssl ndg-httpsclient pyasn1
 
-then install virtualenv and mercurial
+then install virtualenv and mercurial globally
 
     pip install virtualenv mercurial
 
@@ -80,7 +88,10 @@ then install virtualenv and mercurial
 
 some packages to install
 
-* babel
+* babel-sublime
 * oceanic-next
 * sublimelinter
 * sublimelinter-contrib-eslint
+* theme-soda-reloaded
+* all-autocomplete
+* auto-filename
