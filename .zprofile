@@ -5,4 +5,3 @@ hg_ps1() {
 PROMPT='%m:%0d %# '
 export LS_COLORS CLICOLOR
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
