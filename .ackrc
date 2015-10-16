@@ -1,0 +1,3 @@
+--type-add=babel=jsx,js
+
+--ignore-dir=node_modules
