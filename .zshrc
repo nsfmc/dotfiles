@@ -92,7 +92,7 @@ PATH=${PATH}:${PLAN9}/bin export PATH
 
 # NVM
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # scmpuff (thanks mroth)
 eval "$(scmpuff init -s)"
