@@ -17,6 +17,7 @@ at the end of it.
 * chrome
 * spotify
 * slack
+* nvAlt
 
 # cli nonsense
 
@@ -30,7 +31,7 @@ at the end of it.
 
 having done that
 
-    brew install ssh-copy-id node trash
+    brew install ssh-copy-id node trash zsh-syntax-highlighting
 
 
 ## npm
