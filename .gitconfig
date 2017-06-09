@@ -16,12 +16,25 @@
   wip = commit -am \"WIP\"
   unwip = reset HEAD^
 
+  # use to bypass diff so fancy
+  patch = !git --no-pager diff --no-color
+
   co = "!f() { git checkout $* && git submodule update --init --recursive; }; f"
   p = !sh -c 'git pull $* && git submodule update --init --recursive' --
   m = "!f() { git merge \"$@\" && git submodule update --init --recursive; }; f"
   squish = "!f() { git status && git commit -a --amend -C HEAD; }; f"
   unsquish = reset --soft HEAD@{1}
   weekly = !sh -c 'git log --author=$USER --since=`gdate -d last\\ monday +%Y/%m/%d`'
+
+  # Sense aliases
+  next-release = "!f() { echo \"$(aws s3 cp s3://deploy.sense/IN_PROGRESS -)\"; }; f"
+  in-production = "!f() { echo \"$(aws s3 cp s3://deploy.sense/IN_PRODUCTION -)\"; }; f"
+  rebase-production = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PRODUCTION -); echo "Rebasing against ${TARGET}"; git fetch --all; git rebase -i \"origin/$TARGET\"; }; f"
+  rebase-next-release = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); echo "Rebasing against ${TARGET}"; git fetch --all; git rebase -i \"origin/$TARGET\"; }; f"
+  create-pr = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); CURR=$(git rev-parse --abbrev-ref HEAD); LINK=\"https://github.com/Spaced-Out/sense/compare/${TARGET}...${CURR}?expand=1\"; echo \"PR Link: ${LINK}\"; open $LINK; }; f"
+  hotfix = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PRODUCTION -); hub pull-request -b ${TARGET}; }; f"
+  sopr = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); hub pull-request -b ${TARGET}; }; f"
+
 
 [credential]
   helper = osxkeychain
@@ -45,9 +58,16 @@
 
 # presumably added by github.app
 [filter "lfs"]
-        clean = git-lfs clean %f
-        smudge = git-lfs smudge %f
-        required = true
-#[pager]
-#  diff = diff-so-fancy | less --tabs=1,5 -RFX
-#  show = diff-so-fancy | less --tabs=1,5 -RFX
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pager]
+  show = diff-so-fancy | less --tabs=4 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22

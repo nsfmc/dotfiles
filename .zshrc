@@ -37,7 +37,8 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/h
 ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
 
 # use vim
-# export EDITOR=subl
+export EDITOR=subl
+export HGEDITOR="subl -n -w"
 # export VISUAL=subl
 
 # turn on colors for ack searches
@@ -67,6 +68,7 @@ PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # Add global npm path
 PATH=/usr/local/share/npm/bin:${PATH}
+alias npmoffline="npm --cache-min 9999999"
 
 # add haskell bindir
 PATH=~/.cabal/bin:${PATH}
@@ -95,13 +97,25 @@ PATH=${PATH}:${PLAN9}/bin export PATH
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# pyenv
+export PYENV_DIR=~/.pyenv
+[ -d "$PYENV_DIR" ] && eval "$(pyenv init -)"
+
 # scmpuff (thanks mroth)
 eval "$(scmpuff init -s)"
 
 # spacedout
-if [ -e ~/SpacedOut/webapp/bin/bash_profile.spacedout ]
+if [ -e ~/SpacedOut/sense/bin/bash_profile.spacedout ]
 then
-  source ~/SpacedOut/webapp/bin/bash_profile.spacedout
+  source ~/SpacedOut/sense/bin/bash_profile.spacedout
 fi
+unset AWS_SECRET_ACCESS_KEY
+unset AWS_ACCESS_KEY_ID
+
+
+
+export SENSE_HMR_HOST="hmr.local"
 
 motd
+
+export PATH="$HOME/.yarn/bin:$PATH"

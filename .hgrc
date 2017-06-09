@@ -9,6 +9,7 @@ mq =
 rebase =
 hgext.graphlog =
 hgext.fetch =
+hggit = 
 color =
 pager =
 hgext.convert =
