@@ -4,7 +4,7 @@ commitsubrepos = false
 
 [extensions]
 bookmarks =
-evolve = ~/.bin/mutable-history/hgext/evolve.py
+evolve = 
 mq =
 rebase =
 hgext.graphlog =
