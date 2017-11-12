@@ -42,8 +42,15 @@ having done that
 ## misc config
 
     chsh -s $(which zsh)
-    git clone https://github.com/nsfmc/oh-my-zsh ~/.oh-my-zsh
+    mkdir -p ~/projects
     mkdir -p ~/.bin/
+
+    git clone git@github.com:nsfmc/dotfiles ~/projects/dotfiles
+    ln -s ~/projects/dotfiles/.zshrc ~/.zshrc
+    ln -s ~/projects/dotfiles/.gitconfig ~/.gitconfig
+    ln -s ~/projects/dotfiles/.gitignore_global ~/.gitignore_global
+    ln -s ~/projects/dotfiles/.vimrc ~/.vimrc
+    ln -s ~/projects/dotfiles/.hgrc ~/.hgrc
 
     # oldschool keyboard repeat behavior
     defaults write NSGlobalDomain KeyRepeat -int 0
