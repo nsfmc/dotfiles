@@ -94,8 +94,8 @@ PATH=${PATH}:${PLAN9}/bin export PATH
 # export devdrawretina=1
 
 # NVM
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# export NVM_DIR=~/.nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # pyenv
 export PYENV_DIR=~/.pyenv
@@ -111,11 +111,23 @@ then
 fi
 unset AWS_SECRET_ACCESS_KEY
 unset AWS_ACCESS_KEY_ID
+export AWS_REGION="us-west-2"
 
-
-
-export SENSE_HMR_HOST="hmr.local"
+# export SENSE_HMR_HOST="hmr.local"
+alias cpr="git pull-request -F $SENSE_HOME/.github/PULL_REQUEST_TEMPLATE/client.md"
+alias npr="git pull-request -F $SENSE_HOME/.github/PULL_REQUEST_TEMPLATE/server.md"
 
 motd
 
-export PATH="$HOME/.yarn/bin:$PATH"
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export NOTION_HOME="$HOME/.notion"
+[ -s "$NOTION_HOME/load.sh" ] && \. "$NOTION_HOME/load.sh"
+
+export PATH="${NOTION_HOME}/bin:$PATH"
