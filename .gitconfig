@@ -1,6 +1,6 @@
 [user]
-  name = Marcos Ojeda
-  email = subliminal@gmail.com
+	name = Marcos Ojeda
+	email = subliminal@gmail.com
 
 [color]
   ui = true
@@ -34,6 +34,12 @@
   create-pr = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); CURR=$(git rev-parse --abbrev-ref HEAD); LINK=\"https://github.com/Spaced-Out/sense/compare/${TARGET}...${CURR}?expand=1\"; echo \"PR Link: ${LINK}\"; open $LINK; }; f"
   hotfix = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PRODUCTION -); hub pull-request -b ${TARGET}; }; f"
   sopr = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); hub pull-request -b ${TARGET}; }; f"
+  
+  # most recent branches at bottom
+  fresh = branch -vv --sort=committerdate
+  chris = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+  # get commit / resolved branch for current prod deploy
+  deployed = "!f() { DEPLOYED=$(curl -s https://system.sensehq.com/api/v1/system/version | jq -r '.version'); git fetch --all --quiet; git name-rev \"$DEPLOYED\"; }; f"
 
 
 [credential]
@@ -58,10 +64,10 @@
 
 # presumably added by github.app
 [filter "lfs"]
+	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
 [pager]
   show = diff-so-fancy | less --tabs=4 -RFX
   diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
