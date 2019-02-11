@@ -112,7 +112,8 @@ motd
 # [[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [ -d ~/projects/google-cloud-sdk ] then
+if [ -d ~/projects/google-cloud-sdk ] 
+then
   source /Users/marcos/projects/google-cloud-sdk/completion.zsh.inc
   source /Users/marcos/projects/google-cloud-sdk/path.zsh.inc
 fi
