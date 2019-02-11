@@ -13,47 +13,44 @@ at the end of it.
 * sublime text -- pkg control
 * bowtie.app
 * bartender
-* upshot.it
+* upshot.it -- :(
 * chrome
 * spotify
 * slack
 * nvAlt
+* f.lux
 
 # cli nonsense
 
 ## ssh
 
-    ssh-keygen -t rsa
+    ssh-keygen
 
 ## brew
 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 having done that
 
-    brew install ssh-copy-id node trash zsh-syntax-highlighting
+    brew install ssh-copy-id node trash zsh-syntax-highlighting yarn scmpuff
+    ln -s /Users/marcos/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
+## npm/yarn
 
-## npm
-
-    npm install -g http-server
-
-    # individual packages get this
-    npm install --save-dev eslint@latest
-    npm install --save-dev babel-eslint@latest
-    npm install --save-dev eslint-plugin-react@latest
-
-
-    # maybe...
-    npm install --save-dev react-hot-loader
-    # or...
-    git clone https://github.com/gaearon/react-transform-boilerplate.git
+    yarn global add http-server
 
 ## misc config
 
     chsh -s $(which zsh)
-    git clone https://github.com/nsfmc/oh-my-zsh ~/.oh-my-zsh
+    mkdir -p ~/projects
     mkdir -p ~/.bin/
+
+    git clone git@github.com:nsfmc/dotfiles ~/projects/dotfiles
+    ln -s ~/projects/dotfiles/.zshrc ~/.zshrc
+    ln -s ~/projects/dotfiles/.gitconfig ~/.gitconfig
+    ln -s ~/projects/dotfiles/.gitignore_global ~/.gitignore_global
+    ln -s ~/projects/dotfiles/.vimrc ~/.vimrc
+    ln -s ~/projects/dotfiles/.hgrc ~/.hgrc
 
     # oldschool keyboard repeat behavior
     defaults write NSGlobalDomain KeyRepeat -int 0
@@ -126,20 +123,21 @@ then install virtualenv and mercurial globally
 ## mercurial
 
     hg clone https://bitbucket.org/sjl/hg-prompt/ ~/.bin/hg-prompt
-    hg clone https://bitbucket.org/marmoute/mutable-history ~/.bin/mutable-history
-
+    pip install --user hg-evolve
 
 ## sublime packages
 
 some packages to install
 
-* babel-sublime
+* babel
 * oceanic-next
+* gruvbox
 * sublimelinter
 * sublimelinter-contrib-eslint
 * theme-soda-reloaded
 * all-autocomplete
 * auto-filename
+
 
 
 ## blah blah etc prefs

@@ -1,32 +1,15 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="ikea"
+# allows using fancy colors for the prompt and elsewhere
+autoload -U colors && colors
+setopt prompt_subst
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+if [[ -e ~/projects/dotfiles/vcs-prompt.sh ]]; then
+  source ~/projects/dotfiles/vcs-prompt.sh
+fi
 
-# Comment this out to disable weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx)
-
-source $ZSH/oh-my-zsh.sh
+PROMPT='
+%{$fg[blue]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(hg_prompt_info)$(git_prompt_info)
+$(virtualenv_info)$(prompt_char) '
 
 # fancy colors please!
 CLICOLOR=1
@@ -108,10 +91,12 @@ eval "$(scmpuff init -s)"
 if [ -e ~/SpacedOut/sense/bin/bash_profile.spacedout ]
 then
   source ~/SpacedOut/sense/bin/bash_profile.spacedout
+  # export SENSE_HMR_HOST="hmr.local"
+  export AWS_REGION="us-west-2"
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_ACCESS_KEY_ID
 fi
-unset AWS_SECRET_ACCESS_KEY
-unset AWS_ACCESS_KEY_ID
-export AWS_REGION="us-west-2"
+
 
 # export SENSE_HMR_HOST="hmr.local"
 alias cpr="git pull-request -F $SENSE_HOME/.github/PULL_REQUEST_TEMPLATE/client.md"
@@ -121,11 +106,16 @@ motd
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/serverless.zsh
+# [[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# [[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+if [ -d ~/projects/google-cloud-sdk ] then
+  source /Users/marcos/projects/google-cloud-sdk/completion.zsh.inc
+  source /Users/marcos/projects/google-cloud-sdk/path.zsh.inc
+fi
 
 export NOTION_HOME="$HOME/.notion"
 [ -s "$NOTION_HOME/load.sh" ] && \. "$NOTION_HOME/load.sh"
