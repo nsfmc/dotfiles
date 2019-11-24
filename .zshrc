@@ -23,6 +23,25 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt MENU_COMPLETE
 
+# bash-completion (for zsh git completion)
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# Config history for zsh
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+## History command configuration (from omz)
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_find_no_dups      # do not repeat previously found commands during search
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt append_history         # always add to history, no overwrites
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+setopt share_history          # share command history data
+
 # use vim
 export EDITOR=subl
 export HGEDITOR="subl -n -w"
@@ -50,33 +69,32 @@ alias apex="acme -f /mnt/font/LucidaGrande/22a/font -F /mnt/font/SourceCodePro-R
 
 # path updates
 PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/opt/local/bin:${PATH}
-PATH=$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # Add global npm path
-PATH=/usr/local/share/npm/bin:${PATH}
+# PATH=/usr/local/share/npm/bin:${PATH}
 alias npmoffline="npm --cache-min 9999999"
 
 # add haskell bindir
 PATH=~/.cabal/bin:${PATH}
 
 # if you have wofftools installed...
-PATH=~/.bin/wofftools:${PATH}
+# PATH=~/.bin/wofftools:${PATH}
 
 # if you have installed the fdk
-FDK_EXE="/Users/marcos/.bin/fdk/Tools/osx"
-PATH=${PATH}:$FDK_EXE
+# FDK_EXE="/Users/marcos/.bin/fdk/Tools/osx"
+# PATH=${PATH}:$FDK_EXE
 
 # set go paths
-GOPATH="/Users/marcos/projects/go"
-PATH=${PATH}:${GOPATH}/bin
+# GOPATH="/Users/marcos/projects/go"
+# PATH=${PATH}:${GOPATH}/bin
 
 # export all set vars
-export PATH CLICOLOR ACK_PAGER_COLOR FDK_EXE EDITOR MANPAGER GOPATH
+export PATH CLICOLOR ACK_PAGER_COLOR EDITOR MANPAGER
 
 # Plan 9 from userspace
-PLAN9=/usr/local/plan9 export PLAN9
-PATH=${PATH}:${PLAN9}/bin export PATH
+# PLAN9=/usr/local/plan9 export PLAN9
+# PATH=${PATH}:${PLAN9}/bin export PATH
 # TODO(marcos): reenable this when fontsrv works
 # export devdrawretina=1
 
@@ -116,18 +134,41 @@ motd
 # [[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [ -d ~/projects/google-cloud-sdk ] 
+if [ -d ~/projects/google-cloud-sdk ]
 then
   source /Users/marcos/projects/google-cloud-sdk/completion.zsh.inc
   source /Users/marcos/projects/google-cloud-sdk/path.zsh.inc
 fi
 
-export NOTION_HOME="$HOME/.notion"
-[ -s "$NOTION_HOME/load.sh" ] && \. "$NOTION_HOME/load.sh"
 
-export PATH="${NOTION_HOME}/bin:$PATH"
-
+# support for volta.sh
 export VOLTA_HOME="$HOME/.volta"
 [ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
 
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Add deno to path if installed
+if [ -d ~/.deno ]
+then
+   export PATH="/Users/marcos/.deno/bin:$PATH"
+fi
+
+
+# some functions to be replaced later on (to be moved)
+function productionrelease(){
+  if type -f aws-okta > /dev/null; then
+    local prod=$(aws-okta exec okta -- aws s3 cp s3://deploy.sense/IN_PRODUCTION -)
+    echo $prod
+  else
+    echo 'install aws-okta (https://www.notion.so/sensehq/AWS-Onboarding-with-Okta-7241e086ccbe46b58fcadca412014cea)'
+  fi
+}
+
+function productionreleasemultientity(){
+  if type -f aws-okta > /dev/null; then
+    local prod=$(aws-okta exec okta -- aws s3 cp s3://deploy.sense/IN_PRODUCTION_MULTIENTITY -)
+    echo $prod
+  else
+    echo 'install aws-okta (https://www.notion.so/sensehq/AWS-Onboarding-with-Okta-7241e086ccbe46b58fcadca412014cea)'
+  fi
+}

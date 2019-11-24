@@ -6,7 +6,6 @@ autoload -Uz vcs_info
 # Taken from omz
 # Query/use custom command for `git`.
 zstyle -s ":vcs_info:git:*:-all-" "command" git
-# : ${_omz_git_git_cmd:=git}
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -177,7 +176,6 @@ if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
         }
 
         local PWD_URL="file://$HOST$URL_PATH"
-        #echo "$PWD_URL"        # testing
         printf '\e]7;%s\a' "$PWD_URL"
     }
 
