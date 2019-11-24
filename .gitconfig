@@ -23,8 +23,10 @@
   p = !sh -c 'git pull $* && git submodule update --init --recursive' --
   m = "!f() { git merge \"$@\" && git submodule update --init --recursive; }; f"
   squish = "!f() { git status && git commit -a --amend -C HEAD; }; f"
+  smoosh = "!f() { git status && git commit -a -n --amend --no-edit -C HEAD; }; f"
   unsquish = reset --soft HEAD@{1}
   weekly = !sh -c 'git log --author=$USER --since=`gdate -d last\\ monday +%Y/%m/%d`'
+  recent="!git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
 
   # Sense aliases
   next-release = "!f() { echo \"$(aws s3 cp s3://deploy.sense/IN_PROGRESS -)\"; }; f"
@@ -34,12 +36,13 @@
   create-pr = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); CURR=$(git rev-parse --abbrev-ref HEAD); LINK=\"https://github.com/Spaced-Out/sense/compare/${TARGET}...${CURR}?expand=1\"; echo \"PR Link: ${LINK}\"; open $LINK; }; f"
   hotfix = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PRODUCTION -); hub pull-request -b ${TARGET}; }; f"
   sopr = "!f() { TARGET=$(aws s3 cp s3://deploy.sense/IN_PROGRESS -); hub pull-request -b ${TARGET}; }; f"
-  
+
   # most recent branches at bottom
-  fresh = branch -vv --sort=committerdate
+  fresh = branch -vv --sort=-committerdate
   chris = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
   # get commit / resolved branch for current prod deploy
   deployed = "!f() { DEPLOYED=$(curl -s https://system.sensehq.com/api/v1/system/version | jq -r '.version'); git fetch --all --quiet; git name-rev \"$DEPLOYED\"; }; f"
+  me-deployed = "!f() { DEPLOYED=$(curl -s https://system-me.sensehq.com/api/v1/system/version | jq -r '.version'); git fetch --all --quiet; git name-rev \"$DEPLOYED\"; }; f"
 
 
 [credential]
@@ -50,6 +53,7 @@
 
 [core]
   excludesfile = /Users/marcos/.gitignore_global
+  # editor = mvim -f
   editor = subl -n -w
 
 [merge]

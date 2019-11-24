@@ -1,3 +1,4 @@
 --type-add=babel=jsx,js
 
 --ignore-dir=node_modules
+--ignore-dir=ui_server/build
