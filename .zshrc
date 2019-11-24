@@ -19,6 +19,10 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
 
+# tab completion for directory names
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+setopt MENU_COMPLETE
+
 # use vim
 export EDITOR=subl
 export HGEDITOR="subl -n -w"
@@ -122,3 +126,8 @@ export NOTION_HOME="$HOME/.notion"
 [ -s "$NOTION_HOME/load.sh" ] && \. "$NOTION_HOME/load.sh"
 
 export PATH="${NOTION_HOME}/bin:$PATH"
+
+export VOLTA_HOME="$HOME/.volta"
+[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+
+export PATH="$VOLTA_HOME/bin:$PATH"
