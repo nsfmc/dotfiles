@@ -76,7 +76,13 @@ PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 alias npmoffline="npm --cache-min 9999999"
 
 # add haskell bindir
-PATH=~/.cabal/bin:${PATH}
+# PATH=~/.cabal/bin:${PATH}
+
+# add rust cargo bins if dir present
+if [ -d ~/.cargo/bin ]
+then 
+  PATH=~/.cargo/bin:${PATH}
+fi
 
 # if you have wofftools installed...
 # PATH=~/.bin/wofftools:${PATH}
@@ -88,6 +94,7 @@ PATH=~/.cabal/bin:${PATH}
 # set go paths
 # GOPATH="/Users/marcos/projects/go"
 # PATH=${PATH}:${GOPATH}/bin
+
 
 # export all set vars
 export PATH CLICOLOR ACK_PAGER_COLOR EDITOR MANPAGER
