@@ -23,7 +23,7 @@
   p = !sh -c 'git pull $* && git submodule update --init --recursive' --
   m = "!f() { git merge \"$@\" && git submodule update --init --recursive; }; f"
   squish = "!f() { git status && git commit -a --amend -C HEAD; }; f"
-  smoosh = "!f() { git status && git commit -a -n --amend --no-edit -C HEAD; }; f"
+  smoosh = "!f() { git status && git commit -a --amend --no-edit -C HEAD; }; f"
   unsquish = reset --soft HEAD@{1}
   weekly = !sh -c 'git log --author=$USER --since=`gdate -d last\\ monday +%Y/%m/%d`'
   recent="!git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
@@ -42,7 +42,10 @@
   chris = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
   # get commit / resolved branch for current prod deploy
   deployed = "!f() { DEPLOYED=$(curl -s https://system.sensehq.com/api/v1/system/version | jq -r '.version'); git fetch --all --quiet; git name-rev \"$DEPLOYED\"; }; f"
-  me-deployed = "!f() { DEPLOYED=$(curl -s https://system-me.sensehq.com/api/v1/system/version | jq -r '.version'); git fetch --all --quiet; git name-rev \"$DEPLOYED\"; }; f"
+  me-deployed = "!f() { DEPLOYED=$(curl -s https://webapp-system.sensehq.com/api/v1/system/version | jq -r '.version'); git fetch --all --quiet; git name-rev \"$DEPLOYED\"; }; f"
+
+  # taken from https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
+  memento = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}
 
 
 [credential]
@@ -83,3 +86,5 @@
 	newHighlight = green bold 22
 [commit]
 	verbose = true
+[diff-so-fancy]
+	stripLeadingSymbols = false

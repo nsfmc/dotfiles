@@ -8,17 +8,13 @@ at the end of it.
 
 ## mac apps
 
-* dropbox
 * 1password
 * sublime text -- pkg control
-* bowtie.app
 * bartender
-* upshot.it -- :(
 * chrome
 * spotify
 * slack
 * nvAlt
-* f.lux
 
 # cli nonsense
 
@@ -32,7 +28,7 @@ at the end of it.
 
 having done that
 
-    brew install ssh-copy-id node trash zsh-syntax-highlighting yarn scmpuff
+    brew install ssh-copy-id trash zsh-syntax-highlighting scmpuff
     ln -s /Users/marcos/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
 ## npm/yarn
