@@ -1,0 +1,6 @@
+[submodule "mvim/pack/nsfmc/opt/night-owl"]
+	path = mvim/pack/nsfmc/opt/night-owl
+	url = git@github.com:haishanh/night-owl.vim.git
+[submodule "mvim/pack/nsfmc/start/coc"]
+	path = mvim/pack/nsfmc/start/coc
+	url = https://github.com/neoclide/coc.nvim

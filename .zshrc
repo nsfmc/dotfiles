@@ -148,11 +148,10 @@ then
 fi
 
 
-# support for volta.sh
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+# PBJ support
+PBJ_PAGER="vim --cmd 'let no_plugin_maps=1' -c 'runtime! macros/less.vim|set syntax=json|colorscheme delek' -"
+export PBJ_PAGER
 
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Add deno to path if installed
 if [ -d ~/.deno ]
@@ -160,6 +159,7 @@ then
    export PATH="/Users/marcos/.deno/bin:$PATH"
 fi
 
+export PATH="/Users/marcos/.gem/ruby/2.6.0/bin:$PATH"
 
 # some functions to be replaced later on (to be moved)
 function productionrelease(){
@@ -179,3 +179,5 @@ function productionreleasemultientity(){
     echo 'install aws-okta (https://www.notion.so/sensehq/AWS-Onboarding-with-Okta-7241e086ccbe46b58fcadca412014cea)'
   fi
 }
+export VOLTA_HOME="/Users/marcos/.volta"
+grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
