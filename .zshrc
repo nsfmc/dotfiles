@@ -105,10 +105,6 @@ export PATH CLICOLOR ACK_PAGER_COLOR EDITOR MANPAGER
 # TODO(marcos): reenable this when fontsrv works
 # export devdrawretina=1
 
-# NVM
-# export NVM_DIR=~/.nvm
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
 # pyenv
 export PYENV_DIR=~/.pyenv
 [ -d "$PYENV_DIR" ] && eval "$(pyenv init -)"
@@ -141,11 +137,11 @@ motd
 # [[ -f /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/marcos/projects/chromeless/serverless/node_modules/tabtab/.completions/sls.zsh
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [ -d ~/projects/google-cloud-sdk ]
-then
-  source /Users/marcos/projects/google-cloud-sdk/completion.zsh.inc
-  source /Users/marcos/projects/google-cloud-sdk/path.zsh.inc
-fi
+#if [ -d ~/projects/google-cloud-sdk ]
+#then
+#  source /Users/marcos/projects/google-cloud-sdk/completion.zsh.inc
+#  source /Users/marcos/projects/google-cloud-sdk/path.zsh.inc
+#fi
 
 
 # PBJ support
@@ -159,7 +155,8 @@ then
    export PATH="/Users/marcos/.deno/bin:$PATH"
 fi
 
-export PATH="/Users/marcos/.gem/ruby/2.6.0/bin:$PATH"
+# setup ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # some functions to be replaced later on (to be moved)
 function productionrelease(){
@@ -179,5 +176,6 @@ function productionreleasemultientity(){
     echo 'install aws-okta (https://www.notion.so/sensehq/AWS-Onboarding-with-Okta-7241e086ccbe46b58fcadca412014cea)'
   fi
 }
+
 export VOLTA_HOME="/Users/marcos/.volta"
 grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"

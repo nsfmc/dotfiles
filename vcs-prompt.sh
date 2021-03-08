@@ -63,15 +63,17 @@ function parse_git_dirty() {
 # echo a random line from the dotfiles .motd.txt file
 function motd () {
   if [ -e ~/.motd.txt ]; then
-    local rnd=1
-    fn=~/.motd.txt
-    lns=$(wc -l $fn | sed 's|[ ]*\([0-9]*\).*|\1|')
-    if [ "$lns" = 0 ]; then
-      rnd=1
-    else
-      rnd=$(( (RANDOM % (lns + 1)) + 1 ))
-    fi
-    sed -n ${rnd}p $fn
+    python -c"import random as r; import os.path as op; f=open(op.join(op.expanduser('~'),'.motd.txt')); lines=[l for l in f];f.close(); print(r.choice(lines).strip());"
+    #return;
+    #local rnd=1
+    #fn=~/.motd.txt
+    #lns=$(wc -l $fn | sed 's|[ ]*\([0-9]*\).*|\1|')
+    #if [ "$lns" = 0 ]; then
+    #  rnd=1
+    #else
+    #  rnd=$(( (RANDOM % (lns + 1)) + 1 ))
+    #fi
+    #sed -n ${rnd}p $fn
   fi
 }
 

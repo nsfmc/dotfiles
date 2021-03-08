@@ -4,3 +4,21 @@
 [submodule "mvim/pack/nsfmc/start/coc"]
 	path = mvim/pack/nsfmc/start/coc
 	url = https://github.com/neoclide/coc.nvim
+[submodule "mvim/pack/nsfmc/opt/vim-pico8-syntax"]
+	path = mvim/pack/nsfmc/opt/vim-pico8-syntax
+	url = git@github.com:justinj/vim-pico8-syntax.git
+[submodule "mvim/pack/nsfmc/start/vim-airline"]
+	path = mvim/pack/nsfmc/start/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "mvim/pack/nsfmc/start/fugitive"]
+	path = mvim/pack/nsfmc/start/fugitive
+	url = https://tpope.io/vim/fugitive.git
+[submodule "mvim/pack/nsfmc/start/surround"]
+	path = mvim/pack/nsfmc/start/surround
+	url = https://tpope.io/vim/surround.git
+[submodule "mvim/pack/nsfmc/start/command-t"]
+	path = mvim/pack/nsfmc/start/command-t
+	url = https://github.com/wincent/command-t.git
+[submodule "mvim/pack/nsfmc/start/tagbar"]
+	path = mvim/pack/nsfmc/start/tagbar
+	url = git@github.com:preservim/tagbar.git
