@@ -25,3 +25,6 @@
 [submodule "mvim/pack/nsfmc/start/vim-jsx-pretty"]
 	path = mvim/pack/nsfmc/start/vim-jsx-pretty
 	url = git@github.com:MaxMEllon/vim-jsx-pretty.git
+[submodule "mvim/pack/nsfmc/start/vim-ripgrep"]
+	path = mvim/pack/nsfmc/start/vim-ripgrep
+	url = git@github.com:jremmen/vim-ripgrep.git

@@ -140,7 +140,7 @@ function virtualenv_info {
 # helper function that shows you if the folder you're in uses revision control
 function prompt_char {
   git branch >/dev/null 2>/dev/null && echo '±' && return
-  hg root >/dev/null 2>/dev/null && echo '☿' && return
+  #hg root >/dev/null 2>/dev/null && echo '☿' && return
   echo '○'
 }
 
@@ -148,6 +148,9 @@ function wo {
   # work on a virtualenv, defaults to activating
   # ./env/bin/activate but will do
   # $1/bin/activate
+  export PYENV_DIR=~/.pyenv
+  [ -d "$PYENV_DIR" ] && eval "$(pyenv init -)"
+
   local ENV_PATH=${1-"env"}
   source "${ENV_PATH}/bin/activate"
 }
