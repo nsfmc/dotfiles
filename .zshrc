@@ -6,6 +6,7 @@ fi
 
 # allows using fancy colors for the prompt and elsewhere
 autoload -U colors && colors
+export CLICOLOR=1
 setopt prompt_subst
 
 if [[ -e ~/projects/dotfiles/vcs-prompt.sh ]]; then
