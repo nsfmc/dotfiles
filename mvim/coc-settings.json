@@ -1,6 +1,5 @@
 {
-
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "jsx", "tsx", "js", "ts", "css"],
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "javascriptreact", "javascript", "typescript", "typescriptreact", "css"],
   "javascript.validate.enable": false
 }
 

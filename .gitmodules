@@ -28,3 +28,6 @@
 [submodule "mvim/pack/nsfmc/start/vim-ripgrep"]
 	path = mvim/pack/nsfmc/start/vim-ripgrep
 	url = git@github.com:jremmen/vim-ripgrep.git
+[submodule "mvim/pack/nsfmc/start/vim-gitgutter"]
+	path = mvim/pack/nsfmc/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git

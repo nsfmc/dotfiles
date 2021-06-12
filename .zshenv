@@ -1,12 +1,17 @@
 # fancy colors please!
 CLICOLOR=1
 
+# turn on colors for ack searches
+ACK_PAGER_COLOR="less -x4SRFX"
+
+
 # Config history for zsh
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=10000
 
-# use vim
+# GIT Editor setup :|
+# use sublime this way
 # export EDITOR=subl
 # export HGEDITOR="subl -n -w"
 # export VISUAL=subl
@@ -50,6 +55,10 @@ fi
 # setup homebrow ruby path
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
+# Volta
+export VOLTA_HOME="/Users/marcos/.volta"
+grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
+
 
 ###########################################################
 # misc machine/org-specific
@@ -72,7 +81,7 @@ fi
 ##########################################################
 # exports
 
-
+export HAS_ZSHENV=true
 # export all set vars
 export PATH CLICOLOR ACK_PAGER_COLOR EDITOR MANPAGER
 

@@ -1,3 +1,8 @@
+set -o emacs
+
+if [[ -z ${HAS_ZSHENV+x} ]]; then
+  source ~/.zshenv
+fi
 
 # allows using fancy colors for the prompt and elsewhere
 autoload -U colors && colors
@@ -37,12 +42,9 @@ setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
 
 
-# turn on colors for ack searches
-ACK_PAGER_COLOR="less -x4SRFX"
-
-
-
-
+##############################################
+# Utility shell commands
+#
 alias dicelist="python -c \"import random; print ' '.join([''.join([str(random.randrange(1,7)) for x in range(5)]) for x in range(4)])"\"
 
 # for suing acme editor in retina
@@ -55,18 +57,12 @@ alias npmoffline="npm --cache-min 9999999"
 
 # pyenv
 # -- i've disabled this by default but it now
-# -- gets
+# -- gets sourced in the `wo` script
 # export PYENV_DIR=~/.pyenv
 # [ -d "$PYENV_DIR" ] && eval "$(pyenv init -)"
 
 # scmpuff (thanks mroth)
 eval "$(scmpuff init -s)"
-
-
-# export SENSE_HMR_HOST="hmr.local"
-alias cpr="git pull-request -F $SENSE_HOME/.github/PULL_REQUEST_TEMPLATE/client.md"
-alias npr="git pull-request -F $SENSE_HOME/.github/PULL_REQUEST_TEMPLATE/server.md"
-
 
 
 # PBJ support
@@ -75,27 +71,6 @@ export PBJ_PAGER
 
 
 
-
-# some functions to be replaced later on (to be moved)
-function productionrelease(){
-  if type -f aws-okta > /dev/null; then
-    local prod=$(aws-okta exec okta -- aws s3 cp s3://deploy.sense/IN_PRODUCTION -)
-    echo $prod
-  else
-    echo 'install aws-okta (https://www.notion.so/sensehq/AWS-Onboarding-with-Okta-7241e086ccbe46b58fcadca412014cea)'
-  fi
-}
-
-function productionreleasemultientity(){
-  if type -f aws-okta > /dev/null; then
-    local prod=$(aws-okta exec okta -- aws s3 cp s3://deploy.sense/IN_PRODUCTION_MULTIENTITY -)
-    echo $prod
-  else
-    echo 'install aws-okta (https://www.notion.so/sensehq/AWS-Onboarding-with-Okta-7241e086ccbe46b58fcadca412014cea)'
-  fi
-}
-
-export VOLTA_HOME="/Users/marcos/.volta"
-grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
-
 motd
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

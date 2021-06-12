@@ -56,8 +56,8 @@
 
 [core]
   excludesfile = /Users/marcos/.gitignore_global
-  # editor = mvim -f
-  editor = subl -n -w
+  editor = vim -f
+  # editor = subl -n -w
 
 [merge]
   keepBackup = false;
