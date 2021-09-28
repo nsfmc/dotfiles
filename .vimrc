@@ -42,6 +42,12 @@ packadd! outer-sunset
 " colorscheme OuterSunset
 colorscheme night-owl
 
+" fzf (adios command t)
+" this is the fzf dir created by homebrew
+if (isdirectory('/usr/local/opt/fzf'))
+  set rtp+=/usr/local/opt/fzf
+  nnoremap <leader>t :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0 } })<cr>
+endif
 
 " coc
 " config handled externally???
@@ -100,8 +106,4 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'x': 140,
   \ 'y': 120,
   \}
-
-
-" command-t
-
 
