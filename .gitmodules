@@ -16,9 +16,6 @@
 [submodule "mvim/pack/nsfmc/start/surround"]
 	path = mvim/pack/nsfmc/start/surround
 	url = https://tpope.io/vim/surround.git
-[submodule "mvim/pack/nsfmc/start/command-t"]
-	path = mvim/pack/nsfmc/start/command-t
-	url = https://github.com/wincent/command-t.git
 [submodule "mvim/pack/nsfmc/start/tagbar"]
 	path = mvim/pack/nsfmc/start/tagbar
 	url = git@github.com:preservim/tagbar.git
