@@ -4,6 +4,9 @@ CLICOLOR=1
 # turn on colors for ack searches
 ACK_PAGER_COLOR="less -x4SRFX"
 
+# turn on emacs keybindings (this used to be default but something changed?)
+set -o emacs
+
 
 # Config history for zsh
 HISTFILE="$HOME/.zsh_history"
@@ -16,7 +19,7 @@ SAVEHIST=10000
 # export HGEDITOR="subl -n -w"
 # export VISUAL=subl
 
-export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+export EDITOR='vim -f --nomru -c "au VimLeave * !open -a Terminal"'
 
 # use /usr/local for gems
 export GEM_HOME=/usr/local
